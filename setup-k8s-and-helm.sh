@@ -1,6 +1,8 @@
 #!/bin/bash
+
+echo
 echo What is your name? Format is, in lowercase, first-last
-username = read
+read username
 
 echo
 echo Installing Kubernetes prerequisites
