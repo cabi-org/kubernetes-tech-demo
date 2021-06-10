@@ -44,10 +44,5 @@ echo Copying file from local machine
 cp /mnt/c/k8s/$username.config .kube/config
 
 echo
-echo Pull examples repo
-rm -R -f td
-git clone https://github.com/cabi-org/kubernetes-tech-demo.git td
-
-echo
 echo Set showall.sh script to be executable
 chmod +x td/showall.sh
