@@ -48,3 +48,7 @@ cp /mnt/c/k8s/$username.config .kube/config
 echo
 echo Set showall.sh script to be executable
 chmod +x td/showall.sh
+
+echo
+echo Replace your-name with $username
+sed -i 's/your-name/$username/g' td/*.yaml

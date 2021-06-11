@@ -4,8 +4,12 @@
 sandbox:
   user: "your-name"
 
-image:
-  name: "cabinternational/k8s-demo"
+pod:
+  images:
+    - name: "cabinternational/k8s-demo"
+      probes:
+        ready: /health/kubernetes
+        liveness: /health/kubernetes
 
 ingress:
   retrictToCabi: false
