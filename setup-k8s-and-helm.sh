@@ -13,7 +13,7 @@ sudo apt update
 
 echo
 echo Installing latest package updates
-sudo apt upgrade
+sudo apt upgrade -y
 
 echo
 echo Installing needed items to install Kubernetes
@@ -51,4 +51,4 @@ chmod +x td/showall.sh
 
 echo
 echo Replace your-name with $username
-sed -i 's/your-name/$username/g' td/*.yaml
+sed -i "s/your-name/$username/g" td/*.yaml
