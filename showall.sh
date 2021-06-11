@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$1" != "" ]; then
-envtofetch=-n $1
+envtofetch=$1
 else
 envtofetch=
 fi
@@ -46,40 +46,82 @@ kubectl get pvc -A -o wide | grep $filter
 
 else
 
+if [ "$1" != "" ]; then
+
 clear
 echo
 echo "Services running on $envtofetch"
 echo
 echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
 echo "*******************************************************"
-kubectl get all $envtofetch -o wide
+kubectl get all -n $envtofetch -o wide
 echo
 echo "Ingress"
 echo "*******"
-kubectl get ingress $envtofetch -o wide
+kubectl get ingress -n $envtofetch -o wide
 echo
 echo "ConfigMap"
 echo "*********"
-kubectl get configmap $envtofetch -o wide
+kubectl get configmap -n $envtofetch -o wide
 echo
 echo "Secret"
 echo "******"
-kubectl get secret $envtofetch -o wide
+kubectl get secret -n $envtofetch -o wide
 echo
 echo "Endpoint"
 echo "********"
-kubectl get endpoints $envtofetch -o wide
+kubectl get endpoints -n $envtofetch -o wide
 echo
 echo "Certificate"
 echo "***********"
-kubectl get certificate $envtofetch -o wide
+kubectl get certificate -n $envtofetch -o wide
 echo
 echo "CertificateRequest"
 echo "******************"
-kubectl get certificaterequest $envtofetch -o wide
+kubectl get certificaterequest -n $envtofetch -o wide
 echo
 echo "PVC"
 echo "**********"
-kubectl get pvc $envtofetch -o wide
+kubectl get pvc -n $envtofetch -o wide
+
+else
+
+clear
+echo
+echo "Services running on $envtofetch"
+echo
+echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
+echo "*******************************************************"
+kubectl get all -o wide
+echo
+echo "Ingress"
+echo "*******"
+kubectl get ingress -o wide
+echo
+echo "ConfigMap"
+echo "*********"
+kubectl get configmap -o wide
+echo
+echo "Secret"
+echo "******"
+kubectl get secret -o wide
+echo
+echo "Endpoint"
+echo "********"
+kubectl get endpoints -o wide
+echo
+echo "Certificate"
+echo "***********"
+kubectl get certificate -o wide
+echo
+echo "CertificateRequest"
+echo "******************"
+kubectl get certificaterequest -o wide
+echo
+echo "PVC"
+echo "**********"
+kubectl get pvc -o wide
+
+fi
 
 fi
