@@ -6,7 +6,7 @@ sandbox:
 
 pod:
   images:
-    - name: "cabinternational/k8s-demo"
+    - name: "cabinternational/k8s-demo:simple"
       probes:
         ready: /health/kubernetes
         liveness: /health/kubernetes

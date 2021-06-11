@@ -38,6 +38,12 @@ sudo apt update
 sudo apt install helm
 
 echo
+echo Adding CABI Helm repos
+helm repo add cabi https://helm.cabi.org/
+helm repo add cabidev https://development-helm.cabi.org/
+helm repo update
+
+echo
 echo Creating .kube directory
 mkdir .kube
 
