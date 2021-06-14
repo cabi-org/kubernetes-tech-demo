@@ -10,7 +10,7 @@ pod:
       tag: "with-api"
       environmentVariables:
         - name: WINNING_NUMBER
-          value: 6
+          value: "6"
       probes:
         ready: /health/kubernetes
         liveness: /health/kubernetes
