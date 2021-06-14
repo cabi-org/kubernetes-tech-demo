@@ -9,7 +9,7 @@ pod:
     - name: "cabinternational/k8s-demo"
       tag: "with-api"
       environmentVariables:
-        - name: WINNING_NUMBER
+        - name: "WINNING_NUMBER"
           value: "6"
       probes:
         ready: /health/kubernetes
