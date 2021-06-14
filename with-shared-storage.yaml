@@ -7,7 +7,7 @@ sandbox:
 pod:
   sharedVolumes: 
     folders:
-      - shared
+      - /app/shared
 
   images:
     - name: "cabinternational/k8s-demo"
