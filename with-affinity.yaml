@@ -1,0 +1,17 @@
+# This is a YAML-formatted file to set or update certain parameters to get a very basic app up and running in the sandbox.
+# Declare variables to be passed into your templates.
+
+sandbox:
+  user: "your-name"
+
+pod:
+  images:
+    - name: "cabinternational/k8s-demo"
+      tag: "shared-file"
+      probes:
+        ready: /health/kubernetes
+        liveness: /health/kubernetes
+
+ingress:
+  affinity: persistent
+  retrictToCabi: false
