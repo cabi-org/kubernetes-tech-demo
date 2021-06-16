@@ -1,0 +1,29 @@
+# This is a YAML-formatted file to set or update certain parameters to get a very basic app up and running in the sandbox.
+# Declare variables to be passed into your templates.
+
+sandbox:
+  user: "your-name"
+
+pod:
+  images:
+    - name: "cabinternational/k8s-demo"
+      tag: "simple-html-site"
+    - name: "atmoz/sftp"
+      args: ["techdemo:YouCanNeverTell123:::test"]
+      ports:
+        - name: sftp
+          port: 22
+
+services:
+  ports:
+    - port: 80
+      type: ClusterIP
+      protocol: TCP
+    - port: 22
+      type: LoadBalancer
+      protocol: SFTP
+      
+ingress:
+  basePath: "/rewrite"
+  applyRewrite: true
+  retrictToCabi: false
