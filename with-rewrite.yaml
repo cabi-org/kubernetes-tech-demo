@@ -12,4 +12,4 @@ pod:
 ingress:
   basePath: "/rewrite"
   applyRewrite: true
-  retrictToCabi: false
+  restrictToCabi: false

@@ -14,4 +14,4 @@ pod:
 
 ingress:
   affinity: persistent
-  retrictToCabi: false
+  restrictToCabi: false

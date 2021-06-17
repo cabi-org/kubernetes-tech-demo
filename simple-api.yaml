@@ -10,5 +10,5 @@ pod:
       tag: "api"
 
 ingress:
-  retrictToCabi: false
+  restrictToCabi: false
   basePath: "/api"

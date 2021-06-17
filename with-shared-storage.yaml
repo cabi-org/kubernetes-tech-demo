@@ -17,4 +17,4 @@ pod:
         liveness: /health/kubernetes
 
 ingress:
-  retrictToCabi: false
+  restrictToCabi: false

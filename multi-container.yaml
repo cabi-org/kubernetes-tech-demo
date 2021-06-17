@@ -4,26 +4,23 @@
 sandbox:
   user: "your-name"
 
+  sharedVolumes:
+    enablePodShare: true
+
 pod:
   images:
     - name: "cabinternational/k8s-demo"
       tag: "simple-html-site"
+      podSharePath: /usr/share/nginx/html/test
     - name: "atmoz/sftp"
-      args: ["techdemo:YouCanNeverTell123:::test"]
+      args: "[\"techdemo:YouCanNeverTell123:::test\"]"
+      podSharePath: /home/techdemo/test
       ports:
         - name: sftp
           port: 22
+          type: LoadBalancer
 
-services:
-  ports:
-    - port: 80
-      type: ClusterIP
-      protocol: TCP
-    - port: 22
-      type: LoadBalancer
-      protocol: SFTP
-      
 ingress:
   basePath: "/rewrite"
   applyRewrite: true
-  retrictToCabi: false
+  restrictToCabi: false
