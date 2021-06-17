@@ -6,10 +6,10 @@ replicaCount: 1
 sandbox:
   user: "your-name"
 
+pod:
   sharedVolumes:
     enablePodShare: true
 
-pod:
   images:
     - name: "cabinternational/k8s-demo"
       tag: "simple-html-site"
