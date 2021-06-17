@@ -57,5 +57,9 @@ chmod +x td/showall.sh
 chmod +x td/redeploy.sh
 
 echo
-echo Replace your-name with $username
+echo Replacing your-name with $username in value files
 sed -i "s/your-name/$username/g" td/*.yaml
+
+echo
+echo Installation of all necessary packages and value files is finished
+echo
