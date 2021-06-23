@@ -1,0 +1,16 @@
+# This is a YAML-formatted file to set or update certain parameters to get a very basic app up and running in the sandbox.
+# Declare variables to be passed into your templates.
+
+sandbox:
+  user: "your-name"
+
+pod:
+  images:
+    - name: "jabbermouth/kuberneteswithglusterdemo"
+      tag: "latest"
+      probes:
+        ready: /
+        liveness: /
+
+ingress:
+  restrictToCabi: false
