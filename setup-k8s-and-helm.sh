@@ -62,5 +62,9 @@ echo Replacing your-name with $username in value files
 sed -i "s/your-name/$username/g" td/*.yaml
 
 echo
+echo Replacing your-name with $username in showall.sh script
+sed -i "s/your-name/$username/g" td/showall.sh
+
+echo
 echo Installation of all necessary packages and value files is finished
 echo
