@@ -1,0 +1,7 @@
+images:
+  wordpress:
+    ingress:
+      domain: your-name.cabisandbox.org
+      basePath: /
+      restrictToCabi: false
+      includeWww: false
