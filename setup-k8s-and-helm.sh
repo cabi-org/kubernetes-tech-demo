@@ -52,9 +52,10 @@ echo Copying file from local machine
 cp /mnt/c/k8s/$username.config .kube/config
 
 echo
-echo Set showall.sh and redeploy script to be executable
+echo Set scripts to be executable
 chmod +x td/showall.sh
 chmod +x td/redeploy.sh
+chmod +x td/kill.sh
 
 echo
 echo Replacing your-name with $username in value files
