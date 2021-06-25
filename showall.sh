@@ -46,6 +46,10 @@ echo "Endpoint"
 echo "********"
 kubectl get endpoints -A -o wide | grep $filter
 echo
+echo "ClusterIssuer"
+echo "***********"
+kubectl get clusterissuer -A -o wide | grep $filter
+echo
 echo "Certificate"
 echo "***********"
 kubectl get certificate -A -o wide | grep $filter
@@ -54,8 +58,9 @@ echo "CertificateRequest"
 echo "******************"
 kubectl get certificaterequest -A -o wide | grep $filter
 echo
-echo "PVC"
+echo "PV and PVC"
 echo "**********"
+kubectl get pv -A -o wide | grep $filter
 kubectl get pvc -A -o wide | grep $filter
 
 else
@@ -94,7 +99,7 @@ echo "******************"
 kubectl get certificaterequest -n $envtofetch -o wide | grep $filter
 echo
 echo "PVC"
-echo "**********"
+echo "***"
 kubectl get pvc -n $envtofetch -o wide | grep $filter
 
 else 
@@ -132,7 +137,7 @@ echo "******************"
 kubectl get certificaterequest -n $envtofetch -o wide
 echo
 echo "PVC"
-echo "**********"
+echo "***"
 kubectl get pvc -n $envtofetch -o wide
 
 fi
