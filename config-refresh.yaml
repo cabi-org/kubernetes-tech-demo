@@ -15,7 +15,7 @@ pod:
         - name: config-for-refresh
           key: file
           mount: /app/withrefresh.json
-        - name: config-for-roload
+        - name: config-for-reload
           key: file
           mount: /app/withoutrefresh.json
 
