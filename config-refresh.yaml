@@ -12,10 +12,10 @@ pod:
         ready: /health/kubernetes
         liveness: /health/kubernetes
       configMaps:
-        - map: config-for-refresh
+        - name: config-for-refresh
           key: file
           mount: /app/withrefresh.json
-        - map: config-for-roload
+        - name: config-for-roload
           key: file
           mount: /app/withoutrefresh.json
 
