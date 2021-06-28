@@ -1,0 +1,24 @@
+# This is a YAML-formatted file to set or update certain parameters to get a very basic app up and running in the sandbox.
+# Declare variables to be passed into your templates.
+
+sandbox:
+  user: "your-name"
+
+pod:
+  images:
+    - name: "cabinternational/k8s-demo"
+      tag: "refresh-test"
+      probes:
+        ready: /health/kubernetes
+        liveness: /health/kubernetes
+      configMaps:
+        - map: config-for-refresh
+          key: file
+          mount: /app/withrefresh.json
+        - map: config-for-roload
+          key: file
+          mount: /app/withoutrefresh.json
+
+ingress:
+  affinity: persistent
+  restrictToCabi: false

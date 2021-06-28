@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-for-reload
+data:
+  file: |
+    {
+      "ThisWillNotChangeOnRefresh": "The non-refreshing file before updating"
+    }
