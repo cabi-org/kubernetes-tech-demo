@@ -13,11 +13,9 @@ pod:
         liveness: /health/kubernetes
       configMaps:
         - name: config-for-refresh
-          key: file
-          mount: /app/withrefresh.json
+          mount: /app/RefreshableData
         - name: config-for-reload
-          key: file
-          mount: /app/withoutrefresh.json
+          mount: /app/NonRefreshableData
 
 ingress:
   affinity: persistent

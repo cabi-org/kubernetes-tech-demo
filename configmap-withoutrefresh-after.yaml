@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: config-for-reload
 data:
-  file: |
+  data.json: |
     {
       "ThisWillNotChangeOnRefresh": "The non-refreshing file after updating"
     }

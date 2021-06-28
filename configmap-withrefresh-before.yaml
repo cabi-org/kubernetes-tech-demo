@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: config-for-refresh
 data:
-  file: |
+  data.json: |
     {
       "ThisWillChangeOnRefresh": "The refreshing file before updating"
     }
