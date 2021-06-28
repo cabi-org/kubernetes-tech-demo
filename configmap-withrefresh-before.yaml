@@ -5,5 +5,7 @@ metadata:
 data:
   data.json: |
     {
-      "ThisWillChangeOnRefresh": "The refreshing file before updating"
+      "ThisWillNotChangeOnRefresh": {
+        "Data": "The refreshing file before updating"
+      }
     }
