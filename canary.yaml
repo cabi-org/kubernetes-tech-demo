@@ -4,13 +4,17 @@
 sandbox:
   user: "your-name"
 
-canary:
-  enabled: true
-  
 pod:
+  versions:
+    - isCanary: false
+      replicas: 2
+    - isCanary: true
+      replicas: 1
+      overrideTag: "beta"
+
   images:
     - name: "cabinternational/k8s-demo"
-      tag: "beta"
+      tag: "simple"
       probes:
         ready: /health/kubernetes
         liveness: /health/kubernetes
