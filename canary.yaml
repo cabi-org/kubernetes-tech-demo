@@ -20,5 +20,4 @@ pod:
         liveness: /health/kubernetes
 
 ingress:
-  affinity: persistent
   restrictToCabi: false
