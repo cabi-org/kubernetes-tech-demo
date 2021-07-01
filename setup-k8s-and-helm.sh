@@ -31,11 +31,11 @@ echo Fetching available updates from Kubernetes and Helm libraries
 sudo apt update
 
 echo
-echo Installing Kubernetes
+echo Installing Kubernetes...
 sudo apt install -y kubectl
 
 echo
-echo Installing Nano text editor
+echo Installing Nano text editor...
 sudo apt install -y nano
 
 echo
