@@ -22,8 +22,16 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 echo deb http://apt.kubernetes.io/ kubernetes-xenial main | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
 
 echo
-echo Installing Kubernetes
+echo Adding library to install Helm
+curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+
+echo
+echo Fetching available updates from Kubernetes and Helm libraries
 sudo apt update
+
+echo
+echo Installing Kubernetes
 sudo apt install -y kubectl
 
 echo
@@ -32,10 +40,7 @@ sudo apt install -y nano
 
 echo
 echo Installing Helm...
-curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
-echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
-sudo apt update
-sudo apt install helm
+sudo apt install -y helm
 
 echo
 echo Adding CABI Helm repos
