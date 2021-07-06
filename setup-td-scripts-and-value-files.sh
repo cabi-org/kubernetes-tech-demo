@@ -15,3 +15,7 @@ sed -i "s/your-name/$username/g" td/*.yaml
 echo
 echo Replacing your-name with $username in showall.sh script
 sed -i "s/your-name/$username/g" td/showall.sh
+
+echo
+echo Replacing your-name with $username in refresh.sh script
+sed -i "s/your-name/$username/g" td/refresh.sh
