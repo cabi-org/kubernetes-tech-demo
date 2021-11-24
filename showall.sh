@@ -66,6 +66,14 @@ echo "PV and PVC"
 echo "**********"
 kubectl get pv -A -o wide | grep $filter
 kubectl get pvc -A -o wide | grep $filter
+echo
+echo "MongoDB (Community)"
+echo "*******************"
+kubectl get mongodbcommunity -A -o wide | grep $filter
+echo
+echo "Atlas Projects, Clusters and Database Users)"
+echo "********************************************"
+kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -A -o wide | grep $filter
 
 elif [ fetchall == true ] && [ "$microservice" != "" ]; then
 
@@ -109,6 +117,14 @@ echo "PV and PVC"
 echo "**********"
 kubectl get pv -A -o wide -l microservice=$microservice
 kubectl get pvc -A -o wide -l microservice=$microservice
+echo
+echo "MongoDB (Community)"
+echo "*******************"
+kubectl get mongodbcommunity -A -o wide -l microservice=$microservice
+echo
+echo "Atlas Projects, Clusters and Database Users)"
+echo "********************************************"
+kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -A -o wide -l microservice=$microservice
 
 elif [ "$microservice" != "" ]; then
 
@@ -152,6 +168,14 @@ echo "PV and PVC"
 echo "**********"
 kubectl get pv -n $envtofetch -o wide -l microservice=$microservice
 kubectl get pvc -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "MongoDB (Community)"
+echo "*******************"
+kubectl get mongodbcommunity -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Atlas Projects, Clusters and Database Users)"
+echo "********************************************"
+kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -n $envtofetch -o wide -l microservice=$microservice
 
 elif [ "$filter" != "" ]; then
 
@@ -190,6 +214,14 @@ echo
 echo "PVC"
 echo "***"
 kubectl get pvc -n $envtofetch -o wide | grep $filter
+echo
+echo "MongoDB (Community)"
+echo "*******************"
+kubectl get mongodbcommunity -n $envtofetch -o wide | grep $filter
+echo
+echo "Atlas Projects, Clusters and Database Users)"
+echo "********************************************"
+kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -n $envtofetch -o wide | grep $filter
 
 else 
 
@@ -228,5 +260,13 @@ echo
 echo "PVC"
 echo "***"
 kubectl get pvc -n $envtofetch -o wide
+echo
+echo "MongoDB (Community)"
+echo "*******************"
+kubectl get mongodbcommunity -n $envtofetch -o wide
+echo
+echo "Atlas Projects, Clusters and Database Users)"
+echo "********************************************"
+kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -n $envtofetch -o wide
 
 fi
