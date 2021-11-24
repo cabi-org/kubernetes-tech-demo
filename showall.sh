@@ -2,13 +2,16 @@
 
 envtofetch=""
 filter=""
+microservice=""
 fetchall=false
 
-while getopts ":A:n:f:" opt; do
+while getopts ":A:n:m:f:" opt; do
   case $opt in
     A) fetchall=true
     ;;
     n) envtofetch="$OPTARG"
+    ;;
+    m) microservice="$OPTARG"
     ;;
     f) filter="$OPTARG"
     ;;
@@ -22,6 +25,7 @@ envtofetch="sandbox-your-name"
 fi
 
 if [ fetchall == true ] && [ "$filter" != "" ]; then
+
 clear
 echo
 echo "Services running in all namespaces"
@@ -63,9 +67,94 @@ echo "**********"
 kubectl get pv -A -o wide | grep $filter
 kubectl get pvc -A -o wide | grep $filter
 
-else
+elif [ fetchall == true ] && [ "$microservice" != "" ]; then
 
-if [ "$filter" != "" ]; then
+clear
+echo
+echo "Services running in all namespaces"
+echo
+echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
+echo "*******************************************************"
+kubectl get all -A -o wide -l microservice=$microservice
+echo
+echo "Ingress"
+echo "*******"
+kubectl get ingress -A -o wide -l microservice=$microservice
+echo
+echo "ConfigMap"
+echo "*********"
+kubectl get configmap -A -o wide -l microservice=$microservice
+echo
+echo "Secret"
+echo "******"
+kubectl get secret -A -o wide -l microservice=$microservice
+echo
+echo "Endpoint"
+echo "********"
+kubectl get endpoints -A -o wide -l microservice=$microservice
+echo
+echo "ClusterIssuer"
+echo "***********"
+kubectl get clusterissuer -A -o wide -l microservice=$microservice
+echo
+echo "Certificate"
+echo "***********"
+kubectl get certificate -A -o wide -l microservice=$microservice
+echo
+echo "CertificateRequest"
+echo "******************"
+kubectl get certificaterequest -A -o wide -l microservice=$microservice
+echo
+echo "PV and PVC"
+echo "**********"
+kubectl get pv -A -o wide -l microservice=$microservice
+kubectl get pvc -A -o wide -l microservice=$microservice
+
+elif [ "$microservice" != "" ]; then
+
+clear
+echo
+echo "Services running in all namespaces"
+echo
+echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
+echo "*******************************************************"
+kubectl get all -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Ingress"
+echo "*******"
+kubectl get ingress -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "ConfigMap"
+echo "*********"
+kubectl get configmap -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Secret"
+echo "******"
+kubectl get secret -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Endpoint"
+echo "********"
+kubectl get endpoints -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "ClusterIssuer"
+echo "***********"
+kubectl get clusterissuer -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Certificate"
+echo "***********"
+kubectl get certificate -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "CertificateRequest"
+echo "******************"
+kubectl get certificaterequest -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "PV and PVC"
+echo "**********"
+kubectl get pv -n $envtofetch -o wide -l microservice=$microservice
+kubectl get pvc -n $envtofetch -o wide -l microservice=$microservice
+
+elif [ "$filter" != "" ]; then
+
 clear
 echo
 echo "Services (filtered) running in $envtofetch"
@@ -139,7 +228,5 @@ echo
 echo "PVC"
 echo "***"
 kubectl get pvc -n $envtofetch -o wide
-
-fi
 
 fi
