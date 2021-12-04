@@ -74,6 +74,10 @@ echo
 echo "Atlas Projects, Clusters and Database Users)"
 echo "********************************************"
 kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -A -o wide | grep $filter
+echo
+echo "RabbitMQ Clusters, Exchanges and Users)"
+echo "********************************************"
+kubectl get rabbitmqcluster,policy,exchange,binding,queue,user -A -o wide | grep $filter
 
 elif [ fetchall == true ] && [ "$microservice" != "" ]; then
 
@@ -125,6 +129,10 @@ echo
 echo "Atlas Projects, Clusters and Database Users)"
 echo "********************************************"
 kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -A -o wide -l microservice=$microservice
+echo
+echo "RabbitMQ Clusters, Exchanges and Users)"
+echo "********************************************"
+kubectl get rabbitmqcluster,policy,exchange,binding,queue,user -A -o wide -l microservice=$microservice
 
 elif [ "$microservice" != "" ]; then
 
@@ -176,6 +184,10 @@ echo
 echo "Atlas Projects, Clusters and Database Users)"
 echo "********************************************"
 kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "RabbitMQ Clusters, Exchanges and Users)"
+echo "********************************************"
+kubectl get rabbitmqcluster,policy,exchange,binding,queue,user -n $envtofetch -o wide -l microservice=$microservice
 
 elif [ "$filter" != "" ]; then
 
@@ -222,6 +234,10 @@ echo
 echo "Atlas Projects, Clusters and Database Users)"
 echo "********************************************"
 kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -n $envtofetch -o wide | grep $filter
+echo
+echo "RabbitMQ Clusters, Exchanges and Users)"
+echo "********************************************"
+kubectl get rabbitmqcluster,policy,exchange,binding,queue,user -n $envtofetch -o wide | grep $filter
 
 else 
 
@@ -268,5 +284,9 @@ echo
 echo "Atlas Projects, Clusters and Database Users)"
 echo "********************************************"
 kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -n $envtofetch -o wide
+echo
+echo "RabbitMQ Clusters, Exchanges and Users)"
+echo "********************************************"
+kubectl get rabbitmqcluster,policy,exchange,binding,queue,user -n $envtofetch -o wide 
 
 fi
