@@ -77,7 +77,7 @@ kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -A -o wide | grep $fi
 echo
 echo "RabbitMQ Clusters, Exchanges and Users)"
 echo "********************************************"
-kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user -A -o wide | grep $filter
+kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -A -o wide | grep $filter
 
 elif [ fetchall == true ] && [ "$microservice" != "" ]; then
 
@@ -132,7 +132,7 @@ kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -A -o wide -l microse
 echo
 echo "RabbitMQ Clusters, Exchanges and Users)"
 echo "********************************************"
-kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user -A -o wide -l microservice=$microservice
+kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -A -o wide -l microservice=$microservice
 
 elif [ "$microservice" != "" ]; then
 
@@ -187,7 +187,7 @@ kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -n $envtofetch -o wid
 echo
 echo "RabbitMQ Clusters, Exchanges and Users)"
 echo "********************************************"
-kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user -n $envtofetch -o wide -l microservice=$microservice
+kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -n $envtofetch -o wide -l microservice=$microservice
 
 elif [ "$filter" != "" ]; then
 
@@ -237,7 +237,7 @@ kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -n $envtofetch -o wid
 echo
 echo "RabbitMQ Clusters, Exchanges and Users)"
 echo "********************************************"
-kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user -n $envtofetch -o wide | grep $filter
+kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -n $envtofetch -o wide | grep $filter
 
 else 
 
@@ -287,6 +287,6 @@ kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -n $envtofetch -o wid
 echo
 echo "RabbitMQ Clusters, Exchanges and Users)"
 echo "********************************************"
-kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user -n $envtofetch -o wide 
+kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -n $envtofetch -o wide 
 
 fi
