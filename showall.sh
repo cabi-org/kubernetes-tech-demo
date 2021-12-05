@@ -28,7 +28,7 @@ if [ fetchall == true ] && [ "$filter" != "" ]; then
 
 clear
 echo
-echo "Services running in all namespaces"
+echo "Filtered items running in all namespaces"
 echo
 echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
 echo "*******************************************************"
@@ -83,7 +83,7 @@ elif [ fetchall == true ] && [ "$microservice" != "" ]; then
 
 clear
 echo
-echo "Services running in all namespaces"
+echo "Items for a specific microservice running in all namespaces"
 echo
 echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
 echo "*******************************************************"
@@ -138,7 +138,7 @@ elif [ "$microservice" != "" ]; then
 
 clear
 echo
-echo "Services running in all namespaces"
+echo "Items for a specific microservice running in $envtofetch"
 echo
 echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
 echo "*******************************************************"
@@ -193,7 +193,7 @@ elif [ "$filter" != "" ]; then
 
 clear
 echo
-echo "Services (filtered) running in $envtofetch"
+echo "Filtered items running in $envtofetch"
 echo
 echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
 echo "*******************************************************"
@@ -243,7 +243,7 @@ else
 
 clear
 echo
-echo "Services running in $envtofetch"
+echo "All items running in $envtofetch"
 echo
 echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
 echo "*******************************************************"
