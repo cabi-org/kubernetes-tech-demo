@@ -24,7 +24,7 @@ if [ "$envtofetch" == "" ]; then
 envtofetch="sandbox-your-name"
 fi
 
-if [ $fetchall == true ] && [ "$filter" != "" ]; then
+if [ "$fetchall" == "true" ] && [ "$filter" != "" ]; then
 
 clear
 echo
@@ -79,7 +79,7 @@ echo "RabbitMQ Clusters, Exchanges and Users)"
 echo "********************************************"
 kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -A -o wide | grep $filter
 
-elif [ $fetchall == true ] && [ "$microservice" != "" ]; then
+elif [ "$fetchall" == "true" ] && [ "$microservice" != "" ]; then
 
 clear
 echo
