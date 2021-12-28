@@ -3,11 +3,11 @@
 envtofetch=""
 filter=""
 microservice=""
-fetchall=false
+fetchall="false"
 
 while getopts ":A:n:m:f:" opt; do
   case $opt in
-    A) fetchall=true
+    A) fetchall="true"
     ;;
     n) envtofetch="$OPTARG"
     ;;
@@ -24,7 +24,7 @@ if [ "$envtofetch" == "" ]; then
 envtofetch="sandbox-your-name"
 fi
 
-if [ "$fetchall" == "true" ]; then
+if [ "$fetchall" = "true" ]; then
 
 if [ "$filter" != "" ]; then
 
@@ -35,6 +35,10 @@ echo
 echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
 echo "*******************************************************"
 kubectl get all -A -o wide | grep $filter
+echo
+echo "Cron Jobs"
+echo "*********"
+kubectl get cronjobs -A -o wide | grep $filter
 echo
 echo "Ingress"
 echo "*******"
@@ -91,6 +95,10 @@ echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
 echo "*******************************************************"
 kubectl get all -A -o wide -l microservice=$microservice
 echo
+echo "Cron Jobs"
+echo "*********"
+kubectl get cronjobs -A -o wide -l microservice=$microservice
+echo
 echo "Ingress"
 echo "*******"
 kubectl get ingress -A -o wide -l microservice=$microservice
@@ -145,6 +153,10 @@ echo
 echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
 echo "*******************************************************"
 kubectl get all -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Cron Jobs"
+echo "*********"
+kubectl get cronjobs -n $envtofetch -o wide -l microservice=$microservice
 echo
 echo "Ingress"
 echo "*******"
@@ -209,6 +221,10 @@ echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
 echo "*******************************************************"
 kubectl get all -n $envtofetch -o wide | grep $filter
 echo
+echo "Cron Jobs"
+echo "*********"
+kubectl get cronjobs -n $envtofetch -o wide | grep $filter
+echo
 echo "Ingress"
 echo "*******"
 kubectl get ingress -n $envtofetch -o wide | grep $filter
@@ -258,6 +274,10 @@ echo
 echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
 echo "*******************************************************"
 kubectl get all -n $envtofetch -o wide
+echo
+echo "Cron Jobs"
+echo "*********"
+kubectl get cronjobs -n $envtofetch -o wide
 echo
 echo "Ingress"
 echo "*******"
