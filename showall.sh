@@ -32,13 +32,41 @@ clear
 echo
 echo "Filtered items running in all namespaces"
 echo
-echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
-echo "*******************************************************"
-kubectl get all -A -o wide | grep $filter
+echo "Pods"
+echo "****"
+kubectl get pods -A -o wide | grep $filter
+echo
+echo "Services"
+echo "********"
+kubectl get svc -A -o wide | grep $filter
+echo
+echo "Deployments"
+echo "***********"
+kubectl get deploy -A -o wide | grep $filter
+echo
+echo "Daemon Sets"
+echo "***********"
+kubectl get daemonsets -A -o wide | grep $filter
+echo
+echo "Horizontal Pod Autoscalers"
+echo "**************************"
+kubectl get hpa -A -o wide | grep $filter
+echo
+echo "ReplicaSets"
+echo "***********"
+kubectl get replicasets -A -o wide | grep $filter
+echo
+echo "StatefulSets"
+echo "************"
+kubectl get statefulsets -A -o wide | grep $filter
 echo
 echo "Cron Jobs"
 echo "*********"
 kubectl get cronjobs -A -o wide | grep $filter
+echo
+echo "Jobs"
+echo "*********"
+kubectl get jobs -A -o wide | grep $filter
 echo
 echo "Ingress"
 echo "*******"
@@ -91,13 +119,41 @@ clear
 echo
 echo "Items for a specific microservice running in all namespaces"
 echo
-echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
-echo "*******************************************************"
-kubectl get all -A -o wide -l microservice=$microservice
+echo "Pods"
+echo "****"
+kubectl get pods -A -o wide -l microservice=$microservice
+echo
+echo "Services"
+echo "********"
+kubectl get svc -A -o wide -l microservice=$microservice
+echo
+echo "Deployments"
+echo "***********"
+kubectl get deploy -A -o wide -l microservice=$microservice
+echo
+echo "Daemon Sets"
+echo "***********"
+kubectl get daemonsets -A -o wide -l microservice=$microservice
+echo
+echo "Horizontal Pod Autoscalers"
+echo "**************************"
+kubectl get hpa -A -o wide -l microservice=$microservice
+echo
+echo "ReplicaSets"
+echo "***********"
+kubectl get replicasets -A -o wide -l microservice=$microservice
+echo
+echo "StatefulSets"
+echo "************"
+kubectl get statefulsets -A -o wide -l microservice=$microservice
 echo
 echo "Cron Jobs"
 echo "*********"
 kubectl get cronjobs -A -o wide -l microservice=$microservice
+echo
+echo "Jobs"
+echo "*********"
+kubectl get jobs -A -o wide -l microservice=$microservice
 echo
 echo "Ingress"
 echo "*******"
@@ -150,13 +206,41 @@ clear
 echo
 echo "Items for a specific microservice running in $envtofetch"
 echo
-echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
-echo "*******************************************************"
-kubectl get all -n $envtofetch -o wide -l microservice=$microservice
+echo "Pods"
+echo "****"
+kubectl get pods -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Services"
+echo "********"
+kubectl get svc -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Deployments"
+echo "***********"
+kubectl get deploy -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Daemon Sets"
+echo "***********"
+kubectl get daemonsets -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Horizontal Pod Autoscalers"
+echo "**************************"
+kubectl get hpa -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "ReplicaSets"
+echo "***********"
+kubectl get replicasets -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "StatefulSets"
+echo "************"
+kubectl get statefulsets -n $envtofetch -o wide -l microservice=$microservice
 echo
 echo "Cron Jobs"
 echo "*********"
 kubectl get cronjobs -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Jobs"
+echo "*********"
+kubectl get jobs -n $envtofetch -o wide -l microservice=$microservice
 echo
 echo "Ingress"
 echo "*******"
@@ -217,13 +301,41 @@ clear
 echo
 echo "Filtered items running in $envtofetch"
 echo
-echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
-echo "*******************************************************"
-kubectl get all -n $envtofetch -o wide | grep $filter
+echo "Pods"
+echo "****"
+kubectl get pods -n $envtofetch -o wide | grep $filter
+echo
+echo "Services"
+echo "********"
+kubectl get svc -n $envtofetch -o wide | grep $filter
+echo
+echo "Deployments"
+echo "***********"
+kubectl get deploy -n $envtofetch -o wide | grep $filter
+echo
+echo "Daemon Sets"
+echo "***********"
+kubectl get daemonsets -n $envtofetch -o wide | grep $filter
+echo
+echo "Horizontal Pod Autoscalers"
+echo "**************************"
+kubectl get hpa -n $envtofetch -o wide | grep $filter
+echo
+echo "ReplicaSets"
+echo "***********"
+kubectl get replicasets -n $envtofetch -o wide | grep $filter
+echo
+echo "StatefulSets"
+echo "************"
+kubectl get statefulsets -n $envtofetch -o wide | grep $filter
 echo
 echo "Cron Jobs"
 echo "*********"
 kubectl get cronjobs -n $envtofetch -o wide | grep $filter
+echo
+echo "Jobs"
+echo "*********"
+kubectl get jobs -n $envtofetch -o wide | grep $filter
 echo
 echo "Ingress"
 echo "*******"
@@ -271,13 +383,41 @@ clear
 echo
 echo "All items running in $envtofetch"
 echo
-echo "Pods, Services, Deployments, DaemonSets and ReplicaSets"
-echo "*******************************************************"
-kubectl get all -n $envtofetch -o wide
+echo "Pods"
+echo "****"
+kubectl get pods -n $envtofetch -o wide
+echo
+echo "Services"
+echo "********"
+kubectl get svc -n $envtofetch -o wide
+echo
+echo "Deployments"
+echo "***********"
+kubectl get deploy -n $envtofetch -o wide
+echo
+echo "Daemon Sets"
+echo "***********"
+kubectl get daemonsets -n $envtofetch -o wide
+echo
+echo "Horizontal Pod Autoscalers"
+echo "**************************"
+kubectl get hpa -n $envtofetch -o wide
+echo
+echo "ReplicaSets"
+echo "***********"
+kubectl get replicasets -n $envtofetch -o wide
+echo
+echo "StatefulSets"
+echo "************"
+kubectl get statefulsets -n $envtofetch -o wide
 echo
 echo "Cron Jobs"
 echo "*********"
 kubectl get cronjobs -n $envtofetch -o wide
+echo
+echo "Jobs"
+echo "*********"
+kubectl get jobs -n $envtofetch -o wide
 echo
 echo "Ingress"
 echo "*******"
