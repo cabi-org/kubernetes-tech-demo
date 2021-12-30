@@ -200,93 +200,6 @@ echo "RabbitMQ Clusters, Exchanges and Users)"
 echo "********************************************"
 kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -A -o wide -l microservice=$microservice
 
-elif [ "$microservice" != "" ]; then
-
-clear
-echo
-echo "Items for a specific microservice running in $envtofetch"
-echo
-echo "Pods"
-echo "****"
-kubectl get pods -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "Services"
-echo "********"
-kubectl get svc -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "Deployments"
-echo "***********"
-kubectl get deploy -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "Daemon Sets"
-echo "***********"
-kubectl get daemonsets -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "Horizontal Pod Autoscalers"
-echo "**************************"
-kubectl get hpa -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "ReplicaSets"
-echo "***********"
-kubectl get replicasets -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "StatefulSets"
-echo "************"
-kubectl get statefulsets -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "Cron Jobs"
-echo "*********"
-kubectl get cronjobs -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "Jobs"
-echo "*********"
-kubectl get jobs -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "Ingress"
-echo "*******"
-kubectl get ingress -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "ConfigMap"
-echo "*********"
-kubectl get configmap -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "Secret"
-echo "******"
-kubectl get secret -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "Endpoint"
-echo "********"
-kubectl get endpoints -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "ClusterIssuer"
-echo "***********"
-kubectl get clusterissuer -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "Certificate"
-echo "***********"
-kubectl get certificate -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "CertificateRequest"
-echo "******************"
-kubectl get certificaterequest -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "PV and PVC"
-echo "**********"
-kubectl get pv -n $envtofetch -o wide -l microservice=$microservice
-kubectl get pvc -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "MongoDB (Community)"
-echo "*******************"
-kubectl get mongodbcommunity -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "Atlas Projects, Clusters and Database Users)"
-echo "********************************************"
-kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -n $envtofetch -o wide -l microservice=$microservice
-echo
-echo "RabbitMQ Clusters, Exchanges and Users)"
-echo "********************************************"
-kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -n $envtofetch -o wide -l microservice=$microservice
-
 else
 
 echo
@@ -376,6 +289,93 @@ echo
 echo "RabbitMQ Clusters, Exchanges and Users)"
 echo "********************************************"
 kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -n $envtofetch -o wide | grep $filter
+
+elif [ "$microservice" != "" ]; then
+
+clear
+echo
+echo "Items for a specific microservice running in $envtofetch"
+echo
+echo "Pods"
+echo "****"
+kubectl get pods -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Services"
+echo "********"
+kubectl get svc -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Deployments"
+echo "***********"
+kubectl get deploy -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Daemon Sets"
+echo "***********"
+kubectl get daemonsets -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Horizontal Pod Autoscalers"
+echo "**************************"
+kubectl get hpa -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "ReplicaSets"
+echo "***********"
+kubectl get replicasets -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "StatefulSets"
+echo "************"
+kubectl get statefulsets -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Cron Jobs"
+echo "*********"
+kubectl get cronjobs -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Jobs"
+echo "*********"
+kubectl get jobs -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Ingress"
+echo "*******"
+kubectl get ingress -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "ConfigMap"
+echo "*********"
+kubectl get configmap -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Secret"
+echo "******"
+kubectl get secret -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Endpoint"
+echo "********"
+kubectl get endpoints -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "ClusterIssuer"
+echo "***********"
+kubectl get clusterissuer -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Certificate"
+echo "***********"
+kubectl get certificate -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "CertificateRequest"
+echo "******************"
+kubectl get certificaterequest -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "PV and PVC"
+echo "**********"
+kubectl get pv -n $envtofetch -o wide -l microservice=$microservice
+kubectl get pvc -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "MongoDB (Community)"
+echo "*******************"
+kubectl get mongodbcommunity -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "Atlas Projects, Clusters and Database Users)"
+echo "********************************************"
+kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -n $envtofetch -o wide -l microservice=$microservice
+echo
+echo "RabbitMQ Clusters, Exchanges and Users)"
+echo "********************************************"
+kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -n $envtofetch -o wide -l microservice=$microservice
 
 else 
 
