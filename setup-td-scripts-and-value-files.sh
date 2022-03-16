@@ -9,6 +9,7 @@ chmod +x td/apply-configs.sh
 chmod +x td/refresh.sh
 chmod +x td/nrp.sh
 chmod +x td/active-pod-count.sh
+chmod +x td/bashpod.sh
 
 echo
 echo Replacing your-name with $username in value files
