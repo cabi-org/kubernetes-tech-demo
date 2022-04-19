@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MICROSERVICE=$1
+MICROSERVICE=$1-wordpress
 
 if [ "$2" == "" ]; then
   NAMESPACE=development
