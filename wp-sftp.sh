@@ -17,6 +17,10 @@ IP=$(kubectl get svc/$MICROSERVICE-wp-sftp -n $NAMESPACE --template='{{(index .s
 
 IFS=':' read -r -a CREDENTIALS <<< "$CREDENTIALS"
 
+echo
+echo "SFTP Details for $MICROSERVICE on $NAMESPACE"
+echo
 echo "Username: ${CREDENTIALS[0]}"
 echo "Password: ${CREDENTIALS[1]}"
 echo "IP: $IP"
+echo
