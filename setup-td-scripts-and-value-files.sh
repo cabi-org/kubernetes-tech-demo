@@ -25,5 +25,3 @@ sed -i "s/your-name/$username/g" td/showall.sh
 echo
 echo Replacing your-name with $username in refresh.sh script
 sed -i "s/your-name/$username/g" td/refresh.sh
-
-bash td/setup-td-scripts-and-value-files.sh $username
