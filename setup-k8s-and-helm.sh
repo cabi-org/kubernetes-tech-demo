@@ -61,6 +61,10 @@ cp -f /mnt/c/k8s/cabi-production-user .kube/cabi-production-user
 cp -f /mnt/c/k8s/cabi-production-admin .kube/cabi-production-admin
 cp -f .kube/cabi-internal-user .kube/config
 
+echo
+echo Setting up scripts
+bash td/setup-td-scripts-and-value-files.sh $username
+
 #echo
 #echo Add test configmaps
 #td/apply-configs.sh before
