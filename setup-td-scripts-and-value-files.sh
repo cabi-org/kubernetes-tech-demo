@@ -10,6 +10,7 @@ chmod +x td/refresh.sh
 chmod +x td/nrp.sh
 chmod +x td/active-pod-count.sh
 chmod +x td/bashpod.sh
+chmod +x td/bashapp.sh
 chmod +x td/wp-sftp.sh
 chmod +x td/db-creds.sh
 chmod +x td/activate.sh
