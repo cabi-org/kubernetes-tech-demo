@@ -54,43 +54,12 @@ mkdir .kube
 
 echo
 echo Copying file from local machine
-cp /mnt/c/k8s/$username.config .kube/cabi-internal-user
-cp /mnt/c/k8s/$username.config .kube/config
-
-echo
-echo Setting up internal CABI user activation script
-cat <<EOF >activate-cabi-internal-user.sh
-#! /bin/bash
-cp -f .kube/cabi-internal-user .kube/config
-EOF
-chmod +x activate-cabi-internal-user.sh
-
-echo
-echo Setting up internal CABI admin activation script
-
-cat <<EOF >activate-cabi-internal-admin.sh
-#! /bin/bash
-cp -f .kube/cabi-internal-admin .kube/config
-EOF
-chmod +x activate-cabi-internal-admin.sh
-
-echo
-echo Setting up production CABI user activation script
-cat <<EOF >activate-cabi-production-user.sh
-#! /bin/bash
-cp -f .kube/cabi-production-user .kube/config
-EOF
-chmod +x activate-cabi-production-user.sh
-
-echo
-echo Setting up production CABI admin activation script
-cat <<EOF >activate-cabi-production-admin.sh
-#! /bin/bash
-cp -f .kube/cabi-production-admin .kube/config
-EOF
-chmod +x activate-cabi-production-admin.sh
-
-bash td/setup-td-scripts-and-value-files.sh $username
+cp -f /mnt/c/k8s/$username.config .kube/cabi-internal-user
+cp -f /mnt/c/k8s/cabi-internal-user.config .kube/cabi-internal-user
+cp -f /mnt/c/k8s/cabi-internal-admin.config .kube/cabi-internal-admin
+cp -f /mnt/c/k8s/cabi-production-user.config .kube/cabi-production-user
+cp -f /mnt/c/k8s/cabi-production-admin.config .kube/cabi-production-admin
+cp -f /mnt/c/k8s/$username.config .kube/config
 
 #echo
 #echo Add test configmaps
