@@ -105,12 +105,12 @@ echo "MongoDB (Community)"
 echo "*******************"
 kubectl get mongodbcommunity -A -o wide | grep $filter
 echo
-echo "Atlas Projects, Clusters and Database Users)"
-echo "********************************************"
+echo "Atlas Projects, Clusters and Database Users"
+echo "*******************************************"
 kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -A -o wide | grep $filter
 echo
-echo "RabbitMQ Clusters, Exchanges and Users)"
-echo "********************************************"
+echo "RabbitMQ Clusters, Exchanges and Users"
+echo "**************************************"
 kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -A -o wide | grep $filter
 
 elif [ "$microservice" != "" ]; then
@@ -192,12 +192,12 @@ echo "MongoDB (Community)"
 echo "*******************"
 kubectl get mongodbcommunity -A -o wide -l microservice=$microservice
 echo
-echo "Atlas Projects, Clusters and Database Users)"
-echo "********************************************"
+echo "Atlas Projects, Clusters and Database Users"
+echo "*******************************************"
 kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -A -o wide -l microservice=$microservice
 echo
-echo "RabbitMQ Clusters, Exchanges and Users)"
-echo "********************************************"
+echo "RabbitMQ Clusters, Exchanges and Users"
+echo "**************************************"
 kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -A -o wide -l microservice=$microservice
 
 else
@@ -282,12 +282,12 @@ echo "MongoDB (Community)"
 echo "*******************"
 kubectl get mongodbcommunity -n $envtofetch -o wide | grep $filter
 echo
-echo "Atlas Projects, Clusters and Database Users)"
-echo "********************************************"
+echo "Atlas Projects, Clusters and Database Users"
+echo "*******************************************"
 kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -n $envtofetch -o wide | grep $filter
 echo
-echo "RabbitMQ Clusters, Exchanges and Users)"
-echo "********************************************"
+echo "RabbitMQ Clusters, Exchanges and Users"
+echo "**************************************"
 kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -n $envtofetch -o wide | grep $filter
 
 elif [ "$microservice" != "" ]; then
@@ -369,12 +369,12 @@ echo "MongoDB (Community)"
 echo "*******************"
 kubectl get mongodbcommunity -n $envtofetch -o wide -l microservice=$microservice
 echo
-echo "Atlas Projects, Clusters and Database Users)"
-echo "********************************************"
+echo "Atlas Projects, Clusters and Database Users"
+echo "*******************************************"
 kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -n $envtofetch -o wide -l microservice=$microservice
 echo
-echo "RabbitMQ Clusters, Exchanges and Users)"
-echo "********************************************"
+echo "RabbitMQ Clusters, Exchanges and Users"
+echo "**************************************"
 kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -n $envtofetch -o wide -l microservice=$microservice
 
 else 
@@ -451,12 +451,12 @@ echo "MongoDB (Community)"
 echo "*******************"
 kubectl get mongodbcommunity -n $envtofetch -o wide
 echo
-echo "Atlas Projects, Clusters and Database Users)"
-echo "********************************************"
+echo "Atlas Projects, Clusters and Database Users"
+echo "*******************************************"
 kubectl get atlasprojects,atlasclusters,atlasdatabaseusers -n $envtofetch -o wide
 echo
-echo "RabbitMQ Clusters, Exchanges and Users)"
-echo "********************************************"
+echo "RabbitMQ Clusters, Exchanges and Users"
+echo "**************************************"
 kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -n $envtofetch -o wide 
 
 fi
