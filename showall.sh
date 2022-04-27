@@ -106,7 +106,7 @@ echo
 if [ "$types" == "all" ]; then
 echo "PV and PVC"
 echo "**********"
-elif
+else
 echo "PVC"
 echo "***"
 fi
@@ -206,7 +206,7 @@ echo
 if [ "$types" == "all" ]; then
 echo "PV and PVC"
 echo "**********"
-elif
+else
 echo "PVC"
 echo "***"
 fi
@@ -402,7 +402,7 @@ echo
 if [ "$types" == "all" ]; then
 echo "PV and PVC"
 echo "**********"
-elif
+else
 echo "PVC"
 echo "***"
 fi
