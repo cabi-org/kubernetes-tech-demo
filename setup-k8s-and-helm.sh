@@ -55,11 +55,11 @@ mkdir .kube
 echo
 echo Copying file from local machine
 cp -f /mnt/c/k8s/$username.config .kube/cabi-internal-user
-cp -f /mnt/c/k8s/cabi-internal-user.config .kube/cabi-internal-user
-cp -f /mnt/c/k8s/cabi-internal-admin.config .kube/cabi-internal-admin
-cp -f /mnt/c/k8s/cabi-production-user.config .kube/cabi-production-user
-cp -f /mnt/c/k8s/cabi-production-admin.config .kube/cabi-production-admin
-cp -f /mnt/c/k8s/$username.config .kube/config
+cp -f /mnt/c/k8s/cabi-internal-user .kube/cabi-internal-user
+cp -f /mnt/c/k8s/cabi-internal-admin .kube/cabi-internal-admin
+cp -f /mnt/c/k8s/cabi-production-user .kube/cabi-production-user
+cp -f /mnt/c/k8s/cabi-production-admin .kube/cabi-production-admin
+cp -f .kube/cabi-internal-user .kube/config
 
 #echo
 #echo Add test configmaps
