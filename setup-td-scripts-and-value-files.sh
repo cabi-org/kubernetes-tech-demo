@@ -14,6 +14,7 @@ chmod +x td/bashapp.sh
 chmod +x td/wp-sftp.sh
 chmod +x td/db-creds.sh
 chmod +x td/activate.sh
+chmod +x td/log.sh
 
 echo
 echo Replacing your-name with $username in value files
