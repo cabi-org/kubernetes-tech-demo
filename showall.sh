@@ -4,8 +4,9 @@ envtofetch=""
 filter=""
 microservice=""
 fetchall="false"
+types="common"
 
-while getopts ":A:n:m:f:" opt; do
+while getopts ":A:n:m:f:t:" opt; do
   case $opt in
     A) fetchall="true"
     ;;
@@ -14,6 +15,8 @@ while getopts ":A:n:m:f:" opt; do
     m) microservice="$OPTARG"
     ;;
     f) filter="$OPTARG"
+    ;;
+    t) types="$OPTARG"
     ;;
     \?) echo "Invalid option -$OPTARG" >&2
     ;;
@@ -47,6 +50,7 @@ echo
 echo "Daemon Sets"
 echo "***********"
 kubectl get daemonsets -A -o wide | grep $filter
+if [ "$types" == "all" ]; then
 echo
 echo "Horizontal Pod Autoscalers"
 echo "**************************"
@@ -59,6 +63,7 @@ echo
 echo "StatefulSets"
 echo "************"
 kubectl get statefulsets -A -o wide | grep $filter
+fi
 echo
 echo "Cron Jobs"
 echo "*********"
@@ -79,6 +84,7 @@ echo
 echo "Secret"
 echo "******"
 kubectl get secret -A -o wide | grep $filter
+if [ "$types" == "all" ]; then
 echo
 echo "Endpoint"
 echo "********"
@@ -95,11 +101,20 @@ echo
 echo "CertificateRequest"
 echo "******************"
 kubectl get certificaterequest -A -o wide | grep $filter
+fi
 echo
+if [ "$types" == "all" ]; then
 echo "PV and PVC"
 echo "**********"
+elif
+echo "PVC"
+echo "***"
+fi
+if [ "$types" == "all" ]; then
 kubectl get pv -A -o wide | grep $filter
+fi
 kubectl get pvc -A -o wide | grep $filter
+if [ "$types" == "all" ]; then
 echo
 echo "MongoDB (Community)"
 echo "*******************"
@@ -112,6 +127,7 @@ echo
 echo "RabbitMQ Clusters, Exchanges and Users"
 echo "**************************************"
 kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -A -o wide | grep $filter
+fi
 
 elif [ "$microservice" != "" ]; then
 
@@ -134,6 +150,7 @@ echo
 echo "Daemon Sets"
 echo "***********"
 kubectl get daemonsets -A -o wide -l microservice=$microservice
+if [ "$types" == "all" ]; then
 echo
 echo "Horizontal Pod Autoscalers"
 echo "**************************"
@@ -146,6 +163,7 @@ echo
 echo "StatefulSets"
 echo "************"
 kubectl get statefulsets -A -o wide -l microservice=$microservice
+fi
 echo
 echo "Cron Jobs"
 echo "*********"
@@ -166,6 +184,7 @@ echo
 echo "Secret"
 echo "******"
 kubectl get secret -A -o wide -l microservice=$microservice
+if [ "$types" == "all" ]; then
 echo
 echo "Endpoint"
 echo "********"
@@ -182,11 +201,20 @@ echo
 echo "CertificateRequest"
 echo "******************"
 kubectl get certificaterequest -A -o wide -l microservice=$microservice
+fi
 echo
+if [ "$types" == "all" ]; then
 echo "PV and PVC"
 echo "**********"
+elif
+echo "PVC"
+echo "***"
+fi
+if [ "$types" == "all" ]; then
 kubectl get pv -A -o wide -l microservice=$microservice
+fi
 kubectl get pvc -A -o wide -l microservice=$microservice
+if [ "$types" == "all" ]; then
 echo
 echo "MongoDB (Community)"
 echo "*******************"
@@ -199,6 +227,7 @@ echo
 echo "RabbitMQ Clusters, Exchanges and Users"
 echo "**************************************"
 kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -A -o wide -l microservice=$microservice
+fi
 
 else
 
@@ -229,6 +258,7 @@ echo
 echo "Daemon Sets"
 echo "***********"
 kubectl get daemonsets -n $envtofetch -o wide | grep $filter
+if [ "$types" == "all" ]; then
 echo
 echo "Horizontal Pod Autoscalers"
 echo "**************************"
@@ -241,6 +271,7 @@ echo
 echo "StatefulSets"
 echo "************"
 kubectl get statefulsets -n $envtofetch -o wide | grep $filter
+fi
 echo
 echo "Cron Jobs"
 echo "*********"
@@ -261,6 +292,7 @@ echo
 echo "Secret"
 echo "******"
 kubectl get secret -n $envtofetch -o wide | grep $filter
+if [ "$types" == "all" ]; then
 echo
 echo "Endpoint"
 echo "********"
@@ -273,10 +305,12 @@ echo
 echo "CertificateRequest"
 echo "******************"
 kubectl get certificaterequest -n $envtofetch -o wide | grep $filter
+fi
 echo
 echo "PVC"
 echo "***"
 kubectl get pvc -n $envtofetch -o wide | grep $filter
+if [ "$types" == "all" ]; then
 echo
 echo "MongoDB (Community)"
 echo "*******************"
@@ -289,6 +323,7 @@ echo
 echo "RabbitMQ Clusters, Exchanges and Users"
 echo "**************************************"
 kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -n $envtofetch -o wide | grep $filter
+fi
 
 elif [ "$microservice" != "" ]; then
 
@@ -311,6 +346,7 @@ echo
 echo "Daemon Sets"
 echo "***********"
 kubectl get daemonsets -n $envtofetch -o wide -l microservice=$microservice
+if [ "$types" == "all" ]; then
 echo
 echo "Horizontal Pod Autoscalers"
 echo "**************************"
@@ -323,6 +359,7 @@ echo
 echo "StatefulSets"
 echo "************"
 kubectl get statefulsets -n $envtofetch -o wide -l microservice=$microservice
+fi
 echo
 echo "Cron Jobs"
 echo "*********"
@@ -343,6 +380,7 @@ echo
 echo "Secret"
 echo "******"
 kubectl get secret -n $envtofetch -o wide -l microservice=$microservice
+if [ "$types" == "all" ]; then
 echo
 echo "Endpoint"
 echo "********"
@@ -359,11 +397,20 @@ echo
 echo "CertificateRequest"
 echo "******************"
 kubectl get certificaterequest -n $envtofetch -o wide -l microservice=$microservice
+fi
 echo
+if [ "$types" == "all" ]; then
 echo "PV and PVC"
 echo "**********"
+elif
+echo "PVC"
+echo "***"
+fi
+if [ "$types" == "all" ]; then
 kubectl get pv -n $envtofetch -o wide -l microservice=$microservice
+fi
 kubectl get pvc -n $envtofetch -o wide -l microservice=$microservice
+if [ "$types" == "all" ]; then
 echo
 echo "MongoDB (Community)"
 echo "*******************"
@@ -376,6 +423,7 @@ echo
 echo "RabbitMQ Clusters, Exchanges and Users"
 echo "**************************************"
 kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -n $envtofetch -o wide -l microservice=$microservice
+fi
 
 else 
 
@@ -398,6 +446,7 @@ echo
 echo "Daemon Sets"
 echo "***********"
 kubectl get daemonsets -n $envtofetch -o wide
+if [ "$types" == "all" ]; then
 echo
 echo "Horizontal Pod Autoscalers"
 echo "**************************"
@@ -410,6 +459,7 @@ echo
 echo "StatefulSets"
 echo "************"
 kubectl get statefulsets -n $envtofetch -o wide
+fi
 echo
 echo "Cron Jobs"
 echo "*********"
@@ -430,6 +480,7 @@ echo
 echo "Secret"
 echo "******"
 kubectl get secret -n $envtofetch -o wide
+if [ "$types" == "all" ]; then
 echo
 echo "Endpoint"
 echo "********"
@@ -442,10 +493,12 @@ echo
 echo "CertificateRequest"
 echo "******************"
 kubectl get certificaterequest -n $envtofetch -o wide
+fi
 echo
 echo "PVC"
 echo "***"
 kubectl get pvc -n $envtofetch -o wide
+if [ "$types" == "all" ]; then
 echo
 echo "MongoDB (Community)"
 echo "*******************"
@@ -458,5 +511,6 @@ echo
 echo "RabbitMQ Clusters, Exchanges and Users"
 echo "**************************************"
 kubectl get rabbitmqcluster,policy,exchange,binding.rabbitmq.com,queue,user,permission -n $envtofetch -o wide 
+fi
 
 fi

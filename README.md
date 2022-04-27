@@ -44,7 +44,7 @@ These parameters map to the config file naming structure used in the `~/.kube` f
 This command will list all object types, filtered as specified
 
 ```
-td/showall.sh -A true -n [namespace] -m [microservice] -f [filter]
+td/showall.sh -A true -n [namespace] -m [microservice] -f [filter] -t [type]
 ```
 
 **Notes:**
@@ -53,6 +53,7 @@ td/showall.sh -A true -n [namespace] -m [microservice] -f [filter]
 - `-n [namespace]` returns matches in teh specified namespace
 - `-m [microservice]` returns only matches where the label of microservice with the specified value is found
 - `-f [filter]` returns any matches the are found by performing a `grep` on each result set
+- `-t [types]` a value of `all` returns all types where as `common` (the default) only returns types often needed to check something is running
 - If no `-n` or `-A` paramteres are specified, the filtering is applied to the sandbox namespace
 
 ### Number of Active Pods
