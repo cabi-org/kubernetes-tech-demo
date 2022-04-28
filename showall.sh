@@ -83,7 +83,11 @@ kubectl get configmap -A -o wide | grep $filter
 echo
 echo "Secret"
 echo "******"
+if [ "$types" == "all" ]; then
 kubectl get secret -A -o wide | grep $filter
+else
+kubectl get secret -A -o wide | grep $filter | grep -v sh.helm.release
+fi
 if [ "$types" == "all" ]; then
 echo
 echo "Endpoint"
@@ -291,7 +295,11 @@ kubectl get configmap -n $envtofetch -o wide | grep $filter
 echo
 echo "Secret"
 echo "******"
+if [ "$types" == "all" ]; then
 kubectl get secret -n $envtofetch -o wide | grep $filter
+else
+kubectl get secret -n $envtofetch -o wide | grep $filter | grep -v sh.helm.release
+fi
 if [ "$types" == "all" ]; then
 echo
 echo "Endpoint"
