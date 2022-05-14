@@ -15,7 +15,7 @@ fi
 fi
 
 echo
-echo "Paths mapped for domain $DOMAIN in $NAMSPACE"
+echo "Paths mapped for domain $DOMAIN in $NAMESPACE"
 echo
 
 kubectl get ingress -n $NAMESPACE -o json | jq -r '.items[].spec.rules[] | select (.host == "$DOMAIN") | .http.paths[].path'
