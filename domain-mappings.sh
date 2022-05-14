@@ -5,11 +5,11 @@ NAMESPACE=$2
 
 if [ "$NAMESPACE" == "" ]; then
 NAMESPACE=production
-if [ "$DOMAIN" == development* ]; then
+if [[ "$DOMAIN" == development* ]]; then
 NAMESPACE=development
-elif [ "$DOMAIN" == staging* ]; then
+elif [[ "$DOMAIN" == staging* ]]; then
 NAMESPACE=staging
-elif [ "$DOMAIN" == *.cabisandbox.org ]; then
+elif [[ "$DOMAIN" == *.cabisandbox.org ]]; then
 NAMESPACE=sandbox-${DOMAIN/.cabisandbox.org/""}
 fi
 fi
