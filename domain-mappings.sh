@@ -4,7 +4,7 @@ DOMAIN=$1
 NAMESPACE=$2
 
 if [ "$NAMESPACE" == "" ]; then
-$NAMESPACE=production
+NAMESPACE=production
 if [ "$DOMAIN" == development* ]; then
 NAMESPACE=development
 elif [ "$DOMAIN" == staging* ]; then
