@@ -39,6 +39,10 @@ echo Installing Nano text editor...
 sudo apt install -y nano
 
 echo
+echo Installing JQ...
+sudo apt install -y jq
+
+echo
 echo Installing Helm...
 sudo apt install -y helm
 
