@@ -16,6 +16,7 @@ chmod +x td/db-creds.sh
 chmod +x td/activate.sh
 chmod +x td/log.sh
 chmod +x td/domain-mappings.sh
+chmod +x td/all-domains.sh
 
 echo
 echo Replacing your-name with $username in value files
