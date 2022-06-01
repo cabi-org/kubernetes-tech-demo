@@ -1,12 +1,12 @@
 #!/bin/bash
 
 NAMESPACE=$1
-MARKDOWN=$false
+MARKDOWN=0
 if [ "$NAMESPACE" == "" ]; then
 NAMESPACE=development
 fi
 if [ "$2" == "md" ]; then
-MARKDOWN=$true
+MARKDOWN=1
 fi
 
 echo
@@ -16,17 +16,17 @@ echo
 DOMAINS=$(kubectl get ingress -n $NAMESPACE -o json | jq -r ".items[].spec.rules[] | select ((.http != null) ) | .host")
 DOMAINS=$(echo "$DOMAINS" | sort | uniq)
 
-if [ $MARKDOWN -eq $true ]; then
-echo "|Path|Application|"
-echo "|---|---|"
+if [ $MARKDOWN -eq 1 ]; then
+echo "|Path|Application|Purpose|"
+echo "|---|---|---|"
 while IFS= read -r DOMAIN; do
 echo "|$DOMAIN|"
-kubectl get ingress -n $NAMESPACE -o json | jq -r ".items[].spec.rules[] | select (.host == \"$DOMAIN\") | \"|\" + .http.paths[].path + \"|\" + .http.paths[].backend.service.name + \"|\""
+kubectl get ingress -n $NAMESPACE -o json | jq -r ".items[] | .metadata.annotations.description as \$description | .spec.rules[] | select (.host == \"$DOMAIN\") | \"|\" + (.http.paths[].path | (gsub(\"[|]\";\"\\\|\"))) + \"|\" + .http.paths[].backend.service.name + \"|\" + \$description"
 done <<< "$DOMAINS"
 else
 while IFS= read -r DOMAIN; do
 echo "$DOMAIN"
-kubectl get ingress -n $NAMESPACE -o json | jq -r ".items[].spec.rules[] | select (.host == \"$DOMAIN\") | \" - \" + .http.paths[].path + \" [\" + .http.paths[].backend.service.name + \"]\""
+kubectl get ingress -n $NAMESPACE -o json | jq -r ".items[] | .metadata.annotations.description as \$description | .spec.rules[] | select (.host == \"$DOMAIN\") | \" - \" + .http.paths[].path + \" [\" + .http.paths[].backend.service.name + \" - \" + (\$description // \"<no description available>\") + \"]\""
 echo
 done <<< "$DOMAINS"
 fi
