@@ -20,7 +20,7 @@ if [ $MARKDOWN -eq 1 ]; then
 echo "|Path|Application|Purpose|"
 echo "|---|---|---|"
 while IFS= read -r DOMAIN; do
-echo "|$DOMAIN|"
+echo "|**[$DOMAIN](https://$DOMAIN/)**|"
 kubectl get ingress -n $NAMESPACE -o json | jq -r ".items[] | .metadata.annotations.description as \$description | .spec.rules[] | select (.host == \"$DOMAIN\") | \"|\" + (.http.paths[].path | (gsub(\"[|]\";\"\\\|\"))) + \"|\" + .http.paths[].backend.service.name + \"|\" + \$description"
 done <<< "$DOMAINS"
 else
